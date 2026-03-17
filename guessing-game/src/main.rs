@@ -1,7 +1,7 @@
 use std::io; // Library for input-output
 use rand::RngExt; // From where I've been studying, I should've used Rng, but I failed to do so, reading further, found out RngExt
 use std::cmp::Ordering;
-
+use colored::*;
 
 fn main() {
     
@@ -9,7 +9,7 @@ fn main() {
     
     let secret_number = rand::rng().random_range(1..=100);
     
-    println!("Debug for rngExt: secret number is {}", secret_number);
+    // println!("Debug for rngExt: secret number is {}", secret_number);
 
     loop {
     
@@ -29,10 +29,10 @@ fn main() {
     };
 
     match guess.cmp(&secret_number){
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
+        Ordering::Less => println!("{}", "Too small!".red()),
+        Ordering::Greater => println!("{}", "Too big!".red()),
         Ordering::Equal => {
-            println!("You win!");
+            println!("{}", "You win!".green());
             break;
         },
     }
